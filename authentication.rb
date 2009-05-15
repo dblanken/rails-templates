@@ -1,7 +1,7 @@
-load_template "http://github.com/ryanb/rails-templates/raw/master/base.rb"
+load_template "http://github.com/dblanken/rails-templates/raw/master/base.rb"
 
-name = ask("What do you want a user to be called?")
-generate :nifty_authentication, name
+plugin 'rubycas-client-iupui', :git => 'ssh://deploy@cry/var/git/rubycas-client-iupui.git'
+generate :iupui_cas
 rake "db:migrate"
 
-git :add => ".", :commit => "-m 'adding authentication'"
+git :add => ".", :commit => "-m 'adding authentication/authorization'"
