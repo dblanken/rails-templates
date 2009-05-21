@@ -3,7 +3,7 @@ if yes?("Do you want to use RSpec for testing?")
   plugin "rspec-rails", :git => "git://github.com/dchelimsky/rspec-rails.git"
   generate :rspec
 end
-
+plugin "nifty-generators", :git => "git://github.com/dblanken/nifty-generators.git"
 generate :nifty_layout
 
 git :init
