@@ -5,7 +5,7 @@ if yes?("Do you want to use RSpec for testing?")
 end
 
 if yes?("Do you want to searchify?")
-  plugin "searchify", :git => "git://github.com/ryanb/searchify.git"
+  plugin "searchify", :git => "git://github.com/dblanken/searchify.git"
 end
 
 plugin "nifty-generators", :git => "git://github.com/dblanken/nifty-generators.git"
