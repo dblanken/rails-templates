@@ -4,4 +4,5 @@ plugin 'rubycas-client-iupui', :git => 'ssh://deploy@cry/var/git/rubycas-client-
 generate :iupui_cas
 rake "db:migrate"
 
-git :add => ".", :commit => "-m 'adding authentication/authorization'"
+git :add => "."
+git :commit => "-m 'adding authentication/authorization'"

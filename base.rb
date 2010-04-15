@@ -24,4 +24,5 @@ config/database.yml
 db/*.sqlite3
 END
 
-git :add => ".", :commit => "-m 'initial commit'"
+git :add => "."
+git :commit => "-m 'initial commit'"
