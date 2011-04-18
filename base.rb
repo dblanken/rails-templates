@@ -1,28 +1,42 @@
-if yes?("Do you want to use RSpec for testing?")
-  plugin "rspec", :version => '1.2.9', :git => "git://github.com/dchelimsky/rspec.git"
-  plugin "rspec-rails", :version => '1.2.9', :git => "git://github.com/dchelimsky/rspec-rails.git"
-  generate :rspec
-end
+# Get project name from path
+app_name = `pwd`.split('/').last.strip.downcase.gsub(/\s|-/, '_')
 
-if yes?("Do you want to searchify?")
-  plugin "searchify", :git => "git://github.com/dblanken/searchify.git"
-end
+# Create README.markdown
+run 'rm README'
+file 'README.markdown', "# #{project_name.capitalize}"
 
-plugin "nifty-generators", :git => "git://github.com/dblanken/nifty-generators.git"
-generate :nifty_layout
+# create rvmrc file
+create_file ".rvmrc", "rvmgemset use #{app_name}"
 
+gem "simple_form"
+gem "jquery-rails"
+gem "nifty-generators"
+
+run 'bundle install'
+
+rake "db:create", :env => 'development'
+rake "db:create", :env => 'test'
+
+generate 'simple_form:install'
+generate 'nifty:config'
+
+remote_file 'public/javascripts/rails.js' # jquery-rails replaces this
+generate 'jquery:install --ui'
+
+# clean up rails defaults
+remove_file 'public/index.html'
+remove_file 'public/images/rails.png'
+run 'cp config/database.yml config/database.example.yml'
+run "echo 'config/database.yml' >> .gitignore"
+
+# commit to git
 git :init
-
-run "echo 'TODO add readme content' > README"
-run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
-run "cp config/database.yml config/example_database.yml"
-
-file ".gitignore", <<-END
-log/*.log
-tmp/**/*
-config/database.yml
-db/*.sqlite3
-END
-
 git :add => "."
-git :commit => "-m 'initial commit'"
+git :commit => "-a -m 'create initial application'"
+
+say <<-eos
+  ============================================================================
+  Your new Rails application is ready to go.
+  
+  Don't forget to scroll up for important messages from installed generators.
+eos
