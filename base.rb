@@ -6,13 +6,13 @@ run 'rm README'
 file 'README.markdown', "# #{app_name.capitalize}"
 
 # create rvmrc file
-create_file ".rvmrc", "rvm gemset use 1.8.7@#{app_name} --create"
+create_file ".rvmrc", "rvm use 1.8.7@#{app_name} --create"
 
 gem "simple_form"
 gem "jquery-rails"
 gem "nifty-generators"
 
-run "rvm gemset use 1.8.7@#{app_name} --create"
+run "rvm use 1.8.7@#{app_name} --create"
 run 'bundle install'
 
 rake "db:create", :env => 'development'
