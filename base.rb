@@ -18,8 +18,9 @@ run 'bundle install'
 rake "db:create", :env => 'development'
 rake "db:create", :env => 'test'
 
-generate 'simple_form:install'
+remove_file 'app/views/layouts/application.html.erb'
 generate 'nifty:layout'
+generate 'simple_form:install'
 
 remove_file 'public/javascripts/rails.js' # jquery-rails replaces this
 generate 'jquery:install --ui'
