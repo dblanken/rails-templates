@@ -3,7 +3,7 @@ app_name = `pwd`.split('/').last.strip.downcase.gsub(/\s|-/, '_')
 
 # Create README.markdown
 run 'rm README'
-file 'README.markdown', "# #{project_name.capitalize}"
+file 'README.markdown', "# #{app_name.capitalize}"
 
 # create rvmrc file
 create_file ".rvmrc", "rvmgemset use #{app_name}"
