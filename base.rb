@@ -6,7 +6,7 @@ run 'rm README'
 file 'README.markdown', "# #{app_name.capitalize}"
 
 # create rvmrc file
-create_file ".rvmrc", "rvmgemset use #{app_name}"
+create_file ".rvmrc", "rvm gemset use #{app_name}"
 
 gem "simple_form"
 gem "jquery-rails"
