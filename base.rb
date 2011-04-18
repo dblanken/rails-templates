@@ -18,7 +18,7 @@ rake "db:create", :env => 'development'
 rake "db:create", :env => 'test'
 
 generate 'simple_form:install'
-generate 'nifty:config'
+generate 'nifty:layout'
 
 remove_file 'public/javascripts/rails.js' # jquery-rails replaces this
 generate 'jquery:install --ui'
