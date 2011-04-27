@@ -11,6 +11,7 @@ create_file ".rvmrc", "rvm use 1.8.7@#{app_name} --create"
 gem "simple_form"
 gem "jquery-rails"
 gem "nifty-generators", :git => "git@github.com:dblanken/nifty-generators.git"
+gem "mocha", :require => false
 
 run "rvm use 1.8.7@#{app_name} --create"
 run 'bundle install'
